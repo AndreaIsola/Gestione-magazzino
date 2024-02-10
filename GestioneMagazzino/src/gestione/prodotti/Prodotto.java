@@ -1,13 +1,11 @@
 package gestione.prodotti;
-
 import java.util.*;
 
 
 public class Prodotto {
-
 	private String marca;
 	private String modello;
-	private static int seriale=0;
+	private static int seriale = 0;
 	private int quantita;
 	private float prezzo;
 	private int disponibilita;
@@ -18,7 +16,7 @@ public class Prodotto {
 		this.setSeriale();
 		this.setQuantita(quant);
 		this.setPrezzo(prez);
-		this.setDisponibilita(getQuantita()-5);
+		this.setDisponibilita(getQuantita() - 5);
 	}
 	
 	public String getMarca() {
@@ -42,7 +40,7 @@ public class Prodotto {
 	}
 
 	private static void setSeriale() {
-		Prodotto.seriale ++ ;
+		Prodotto.seriale++ ;
 	}
 
 	public int getQuantita() {
@@ -71,21 +69,19 @@ public class Prodotto {
 	
 	public boolean confrontoProdotti(Prodotto a, Prodotto p) {
 		
-    	if(a.getMarca()==p.getMarca() && a.getModello()==p.getModello() && 
-    	   a.getQuantita()==p.getQuantita() && a.getPrezzo()==p.getPrezzo()) {
+    	if(a.getMarca() == p.getMarca() && a.getModello() == p.getModello() && 
+    	   a.getQuantita() == p.getQuantita() && a.getPrezzo() == p.getPrezzo()) {
     		return true;
-    	}
-
-		
+	}	
 		return false;
 	}
 	
 	public String toString() {
-		return "Prodotto [marca=" + marca + ", modello=" + modello + ",seriale"+ seriale + ", quantita=" + quantita + ", prezzo=" + prezzo
-				+ ", disponibilita=" + disponibilita + "]";
+		return "Prodotto [marca= " + marca + ", modello= " + modello + ",seriale" + seriale + ", quantita= " + quantita + ", prezzo=" + prezzo
+				+ ", disponibilita= " + disponibilita + "]";
 	}
-
+	
 	public static void main(String[] args) {
-
+		
 	}
 }
