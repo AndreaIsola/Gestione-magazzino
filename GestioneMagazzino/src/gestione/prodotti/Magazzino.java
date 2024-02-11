@@ -17,7 +17,7 @@ public class Magazzino {
 		int i = 0;
 		int j = 0;
 		
-		if(p = =null) {
+		if(p == null) {
 			 throw new Exception("Il prodotto non esiste");
 		} else {
 			while(i < scaffale.length) {
