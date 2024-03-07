@@ -1,32 +1,27 @@
+package Progetto;
+
 /**
- * La classe Prodotto ricrea un prodotto con relativa Marca, Modello, Seriale, Quantit‡, Prezzo, Disponibilit‡
- * Autore: Isola Andrea, Pellegrini Marta, Tenti Kevin, Del Magro Federico
+ * La classe Prodotto rappresenta un oggetto prodotto con attributi come marca, modello, seriale, quantit√†, prezzo e disponibilit√†.
+ * Autore: Isola Andrea, Tenti Kevin, Pellegrini Marta, Del Magro Federico
  * Data: 15/02/2024
  */
-package gestione.prodotti; // Il pacchetto in cui si trova questa classe
-
-import java.util.*; // Importa tutte le classi nel pacchetto java.util
-
-/**
- * La classe Prodotto rappresenta un oggetto prodotto con attributi come marca, modello, seriale, quantit‡, prezzo e disponibilit‡.
- */
-public class Prodotto { // Definizione della classe Prodotto
-    private String marca; // Marca del prodotto
-    private String modello; // Modello del prodotto
-    private static int seriale = 0; // Numero seriale del prodotto, comune a tutti i prodotti
-    private int quantita; // Quantit‡ del prodotto disponibile
-    private float prezzo; // Prezzo del prodotto
-    private int disponibilita; // Disponibilit‡ del prodotto
+public class Prodotto { 
+    private String marca; 
+    private String modello; 
+    private static int seriale = 0; 
+    private int quantita; 
+    private float prezzo; 
+    private int disponibilita; 
 
     /**
      * Costruisce un nuovo oggetto Prodotto con i parametri forniti.
      * @param marc la marca del prodotto
      * @param mod il modello del prodotto
-     * @param quant la quantit‡ del prodotto disponibile
+     * @param quant la quantit√† del prodotto disponibile
      * @param prez il prezzo del prodotto
      */
-    public Prodotto(String marc, String mod, int quant, float prez) { // Costruttore della classe Prodotto
-        this.setMarca(marc);            // Inizializza le variabili di istanza con i valori forniti
+    public Prodotto(String marc, String mod, int quant, float prez) { 
+        this.setMarca(marc); 
         this.setModello(mod);
         this.setSeriale();
         this.setQuantita(quant);
@@ -77,24 +72,28 @@ public class Prodotto { // Definizione della classe Prodotto
     /**
      * Incrementa il numero seriale del prodotto.
      */
-    private static void setSeriale() {
-        Prodotto.seriale++ ;
+    private void setSeriale() {
+        this.seriale++;
     }
 
     /**
-     * Restituisce la quantit‡ del prodotto disponibile.
-     * @return la quantit‡ del prodotto disponibile
+     * Restituisce la quantit√† del prodotto disponibile.
+     * @return la quantit√† del prodotto disponibile
      */
     public int getQuantita() {
         return quantita;
     }
 
     /**
-     * Imposta la quantit‡ del prodotto disponibile.
-     * @param quantita la nuova quantit‡ del prodotto disponibile
+     * Imposta la quantit√† del prodotto disponibile.
+     * @param quantita la nuova quantit√† del prodotto disponibile
      */
     public void setQuantita(int quantita) {
-        this.quantita = quantita;
+        if (quantita < 0) {
+            this.quantita = 0;
+        } else {
+            this.quantita = quantita;
+        }
     }
 
     /**
@@ -114,28 +113,34 @@ public class Prodotto { // Definizione della classe Prodotto
     }
 
     /**
-     * Restituisce la disponibilit‡ del prodotto.
-     * @return la disponibilit‡ del prodotto
+     * Restituisce la disponibilit√† del prodotto.
+     * @return la disponibilit√† del prodotto
      */
     public int getDisponibilita() {
         return disponibilita;
     }
 
     /**
-     * Imposta la disponibilit‡ del prodotto.
-     * @param disponibilita la nuova disponibilit‡ del prodotto
+     * Imposta la disponibilit√† del prodotto.
+     * @param disponibilita la nuova disponibilit√† del prodotto
      */
     private void setDisponibilita(int disponibilita) {
-    	
-    	this.disponibilita = disponibilita-1;
+        if (disponibilita == 1) {
+            this.disponibilita = disponibilita;
+        } else if (disponibilita <= 0) {
+            this.disponibilita = 0;
+        } else {
+            this.disponibilita = disponibilita - 1;
+        }
     }
 
     /**
      * Converte le informazioni del prodotto in una stringa.
      * @return una stringa che rappresenta le informazioni del prodotto
      */
-    public String toString() { // Metodo per convertire le informazioni del prodotto in una stringa
-        return "Prodotto [marca= " + marca + ", modello= " + modello + " ,seriale= "+ seriale + ", quantita= " + quantita + ", prezzo= " + prezzo // Restituisce una stringa che rappresenta le informazioni del prodotto
+    @Override
+    public String toString() {
+        return "Prodotto [marca= " + marca + ", modello= " + modello + " ,seriale= " + seriale + ", quantita= " + quantita + ", prezzo= " + prezzo // Restituisce una stringa che rappresenta le informazioni del prodotto
                 + ", disponibilita= " + disponibilita + "]";
     }
 }
